@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ -z "$GKE_LOGS_FILTER" ]
+  then
+    GKE_LOGS_FILTER="\(.timestampSeconds | todate) \(.severity) \(.message)"
+fi
+
+kubectl logs $@ | jq -R -r '. as $line | try (fromjson| "'"$GKE_LOGS_FILTER"'" ) catch $line'
