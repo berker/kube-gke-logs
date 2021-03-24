@@ -8,7 +8,16 @@ You need to install `kubectl` and [jq](https://stedolan.github.io/jq/) to use `k
 
 Download `kube-gke-logs`, make it executable and add it your PATH.
 
+* `chmod +x ./kube-gke-logs`
+* `sudo mv ./kube-gke-logs /usr/local/bin`
+
 If you use `zsh`, you can add completion script to use autocomplete feature for Pod and Container names.
+
+* Include the directory in your `$fpath` by adding in `~/.zshrc`:
+    * `fpath=(~/kube-gke-logs/completion $fpath)`
+* Make sure `compinit` is loaded or do it by adding in `~/.zshrc`:
+    * `autoload -Uz compinit && compinit -i`
+* Reload shell
 
 ## Usage
 
